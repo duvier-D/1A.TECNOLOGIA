@@ -8,12 +8,12 @@
           {{ menuAbierto ? 'Cerrar Menú' : '☰ Menú' }}
         </button>
         <!-- ✅ Componente Perfil -->
-        <perfil @logout="$emit('logout')" />
+        <perfil id="perfil" @logout="$emit('logout')" />
       </div>
     </div>
 
     <!-- ✅ Menú desplegable -->
-    <nav v-if="menuAbierto" class="menu-desplegable">
+    <nav v-if="menuAbierto" class="menu-desplegable" id="menu">
       <router-link class="btn" to="/inicio" @click="cerrarMenu">Inicio</router-link>
       <router-link class="btn" to="/computadores" @click="cerrarMenu">Computadores</router-link>
       <router-link class="btn" v-if="usuario?.rol === 'admin'" to="/usuarios" @click="cerrarMenu">Usuarios</router-link>
@@ -63,6 +63,8 @@ header {
   display: flex;
   align-items: center;
   gap: 15px;
+  width: 40%;
+  justify-content: center;
 }
 .menu-toggle {
   background: #2ecc71;
@@ -78,9 +80,10 @@ header {
   background: #27ae60;
 }
 .menu-desplegable {
+ 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  row-gap: 10px;
   background: white;
   padding: 15px;
   margin-top: 10px;
@@ -101,6 +104,10 @@ header {
   background: #3498db;
   color: white;
 }
+#menu{
+  width: 85%;
+}
+
 
 /* ✅ Animación */
 @keyframes slideDown {
@@ -122,13 +129,14 @@ header {
   }
   .header-actions {
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
-  .menu-toggle {
-    width: 100%;
-  }
+ 
   .menu-desplegable {
     width: 100%;
   }
+}
+#perfil{
+  width: 30%;
 }
 </style>

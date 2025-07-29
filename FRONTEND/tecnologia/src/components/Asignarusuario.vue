@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000/asignar-usuario";
+const API_URL = "http://192.168.1.233:8000/asignar-usuario";
 
 const usuarios = ref([]);
 const trabajadores = ref([]);
@@ -20,12 +20,12 @@ onMounted(async () => {
 });
 
 const cargarUsuarios = async () => {
-  const { data } = await axios.get("http://127.0.0.1:8000/usuarios/");
+  const { data } = await axios.get("http://192.168.1.233:8000/usuarios/");
   usuarios.value = data;
 };
 
 const cargarTrabajadores = async () => {
-  const { data } = await axios.get("http://127.0.0.1:8000/trabajadores/");
+  const { data } = await axios.get("http://192.168.1.233:8000/trabajadores/");
   trabajadores.value = data;
 };
 

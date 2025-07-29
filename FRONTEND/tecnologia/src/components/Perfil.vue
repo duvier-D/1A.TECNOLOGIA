@@ -15,7 +15,7 @@ onMounted(async () => {
 
     try {
       const { data } = await axios.get(
-        `http://127.0.0.1:8000/asignar-usuario/perfil/${username}`
+        `http://192.168.1.233:8000/asignar-usuario/perfil/${username}`
       );
       perfil.value = data;
       perfil.value.username = username;
@@ -37,14 +37,15 @@ onMounted(async () => {
         :src="perfil.foto || 'https://via.placeholder.com/150'"
         alt="Foto de perfil"
       />
-      <div>
-        <h2>{{ perfil.nombre }}</h2>
-        <p>@{{ perfil.username }}</p>
-      </div>
+
 
       <div class="buttons">
         <!-- ✅ Aquí emitimos el evento -->
         <button class="btn" @click="emit('logout')">Cerrar sesión</button>
+              <div>
+        <h2>{{ perfil.nombre }}</h2>
+        <p>@{{ perfil.username }}</p>
+      </div>
       </div>
     </div>
   </div>
@@ -89,6 +90,7 @@ onMounted(async () => {
 h2 {
   font-size: 10px;
   margin-bottom: 0;
+  color: black;
   
   
 }
@@ -102,10 +104,12 @@ p {
 
 .buttons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
   width: 100%;
-
+  
 }
 
 .btn {

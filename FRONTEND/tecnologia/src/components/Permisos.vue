@@ -333,6 +333,11 @@ export default {
   color: white;
   border: none;
   cursor: pointer;
+  margin: 2px;
+  width: 90%;
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  overflow: hidden;     /* Oculta el texto que se sale (opcional) */
+  text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
 }
 .btn-edit {
   background: #f39c12;
@@ -434,6 +439,10 @@ export default {
   border-radius: 6px;
   cursor: pointer;
   margin: 2px;
+  width: 100%;
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  overflow: hidden;     /* Oculta el texto que se sale (opcional) */
+  text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
 }
 .btn-info:hover {
   background: #2980b9;
@@ -459,7 +468,8 @@ export default {
 
 @media (max-width: 1024px) {
   .filtros {
-    flex-direction: column;
+    width: 100%;
+    
     gap: 8px;
     align-items: stretch;
   }
@@ -531,7 +541,7 @@ export default {
   .btn-edit,
   .btn-delete,
   .btn-info {
-    font-size: 12px;
+    font-size: 10px;
     padding: 6px 8px;
   }
 
@@ -546,11 +556,7 @@ export default {
     padding: 8px;
   }
 }
-.btn-info {
-  
-  padding: 4px 4px;
-  
-}
+
 .btn-edit,
 .btn-delete {
   padding: 3px 4px;
