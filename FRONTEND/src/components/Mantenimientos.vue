@@ -259,19 +259,19 @@ export default {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
-  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
-  overflow: hidden;     /* Oculta el texto que se sale (opcional) */
-  text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
+ 
 }
 .tabla th {
   background-color: #3498db;
   color: white;
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  overflow: hidden;     /* Oculta el texto que se sale (opcional) */
+  text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
 }
 .estado {
   padding: 4px 4px;
   border-radius: 4px;
   color: white;
-  
   white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
   overflow: hidden;     /* Oculta el texto que se sale (opcional) */
   text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
@@ -289,6 +289,7 @@ export default {
   color: white;
   border: none;
   cursor: pointer;
+  margin: 2px;
 }
 .btn-edit {
   background: #f39c12;
@@ -416,7 +417,7 @@ export default {
     white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
     overflow: hidden;     /* Oculta el texto que se sale (opcional) */
     text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
-    margin: 2px;
+    
   }
 
   /* 🔹 Modal responsive */
