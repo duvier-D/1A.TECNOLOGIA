@@ -555,14 +555,16 @@ export default {
     font-size: 14px;
     padding: 8px;
   }
-}
-
-.btn-edit,
-.btn-delete {
+  .btn-edit,
+  .btn-delete {
   padding: 3px 4px;
   margin: 2px;
   
 
 }
+}
+
+
+
 
 </style>

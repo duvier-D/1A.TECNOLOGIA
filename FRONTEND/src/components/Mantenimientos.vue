@@ -36,21 +36,21 @@
             <th>Fecha</th>
             <th>Hora</th>
             <th>Tipo</th>
-            <th id="obser">Observaciones</th>
+            <th >Observaciones</th>
             <th>Estado</th>
             <th v-if="esAdmin()">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="m in mantenimientos" :key="m.id">
-            <td>{{ m.id }}</td>
-            <td>{{ m.computador?.nombre || m.computador_id }}</td>
-            <td>{{ formatearFecha(m.fecha) }}</td>
-            <td>{{ m.hora }}</td>
-            <td>{{ m.tipo }}</td>
-            <td id="obser">{{ m.observaciones }}</td>
-            <td>
-              <span :class="['estado', m.estado]">{{ m.estado }}</span>
+            <td data-label="ID">{{ m.id }}</td>
+            <td data-label="Computador">{{ m.computador?.nombre || m.computador_id }}</td>
+            <td data-label="Fecha">{{ formatearFecha(m.fecha) }}</td>
+            <td data-label="Hora">{{ m.hora }}</td>
+            <td data-label="Tipo">{{ m.tipo }}</td>
+            <td data-label="Observaciones">{{ m.observaciones }}</td>
+            <td data-label="Estado">
+             <span :class="['estado', m.estado]">{{ m.estado }}</span>
             </td>
             <td v-if="esAdmin()">
               <button @click="abrirFormulario(m)" class="btn-edit">Editar</button>
@@ -259,15 +259,22 @@ export default {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  overflow: hidden;     /* Oculta el texto que se sale (opcional) */
+  text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
 }
 .tabla th {
   background-color: #3498db;
   color: white;
 }
 .estado {
-  padding: 4px 8px;
+  padding: 4px 4px;
   border-radius: 4px;
   color: white;
+  
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  overflow: hidden;     /* Oculta el texto que se sale (opcional) */
+  text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
 }
 .estado.pendiente {
   background: #f39c12;
@@ -367,13 +374,96 @@ export default {
   border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-#obser{
-  width: 10%;
-  word-wrap: break-word; /* ✅ Rompe palabras largas */
-  overflow-wrap: break-word; /* ✅ Soporte extra */
-  white-space: normal; /* ✅ Permitir salto de línea */
-  text-align: left; /* ✅ Mejor legibilidad */
+
+@media (max-width: 500px) {
+  /* 🔹 Título */
+  .titulo {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  /* 🔹 Filtros en columna */
+  
+
+  .filtros input,
+  .filtros select,
+  .btn-search,
+  .btn-add {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* 🔹 Tabla con scroll horizontal */
+ 
+
+  .tabla {
+    min-width: 600px;
+    font-size: 13px;
+  }
+
+  .tabla th,
+  .tabla td {
+    padding: 8px;
+    word-break: break-word;
+  }
+
+  .btn-edit,
+  .btn-delete {
+    font-size: 12px;
+    padding: 5px 10px;
+    white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+    overflow: hidden;     /* Oculta el texto que se sale (opcional) */
+    text-overflow: ellipsis; /* Añade "..." si el texto no cabe */
+    margin: 2px;
+  }
+
+  /* 🔹 Modal responsive */
+  .modal {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .modal h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .modal select,
+  .modal input,
+  .modal textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .save,
+  .cancel {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* 🔹 Toast adaptado */
+  .toast {
+    top: auto;
+    bottom: 15px;
+    left: 10px;
+    right: 10px;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  /* 🔹 Observaciones columna: permitir que baje el texto */
   
 }
+
 
 </style>
