@@ -46,13 +46,12 @@ header {
   width: 100%;
   background: linear-gradient(to right, #64f383, #656de9);
   color: white;
-  padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   
 }
 .header-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
